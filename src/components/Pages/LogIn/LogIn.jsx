@@ -2,6 +2,9 @@
 
 import { Link } from "react-router-dom";
 import useAuthHook from "../../../Hook/useAuthHook";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 //import { Result } from "postcss";
 
 const LogIn = () => {
@@ -17,6 +20,7 @@ const LogIn = () => {
     // Sign In with Firebase
     signIn(email, password)
       .then(Result => {
+        toast.success('Log in SuccessFully');
         const user = Result.user;
         const updateUser = {
           email,
@@ -34,7 +38,10 @@ const LogIn = () => {
           .then(data => console.log(data))
           .catch(error => console.log(error));
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.error(error)
+        toast.error('GIve authentic Email and passWord')
+      });
   
     // Attempt to reset the form
     e.currentTarget.reset();
@@ -99,6 +106,7 @@ const LogIn = () => {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </div>
   );
