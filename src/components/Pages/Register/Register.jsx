@@ -4,9 +4,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaRegEyeSlash } from "react-icons/fa";
+import useAuthHook from "../../../Hook/useAuthHook";
 
 const Register = () => {
     const [show,setShow]=useState(false)
+    const info=useAuthHook();
+    const {createUSer}=info;
 
         const handleRegister = e => {
         e.preventDefault();
@@ -17,7 +20,7 @@ const Register = () => {
         const photo = form.get('photo');
         const email = form.get('email');
         const password = form.get('password');
-       // console.log(name, photo, email, password);
+        const registration={name, photo, email, password}
         
         if(password.length<6){
           console.log("Password Must Be 6 character");
@@ -32,6 +35,28 @@ const Register = () => {
           console.log("At leat One LowerCase needed");
           return;
       }
+
+      createUSer(email,password)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        //==New User SuccessFully Created
+        fetch('http://localhost:5000/users',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json',
+          },
+          body:JSON.stringify(user)
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode,errorMessage);
+      });
+    
 
 
 

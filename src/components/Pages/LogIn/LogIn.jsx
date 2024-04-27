@@ -1,25 +1,45 @@
 //import React from 'react';
 
 import { Link } from "react-router-dom";
+import useAuthHook from "../../../Hook/useAuthHook";
+//import { Result } from "postcss";
 
 const LogIn = () => {
+  const {signIn}=useAuthHook();
+  console.log(signIn)
 
-    const handleLogin = (e) => {   
-        e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        const email = form.get("email");
-        const password = form.get("password");
-        console.log(email,password)
-
-
-
-
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+    
+    // Sign In with Firebase
+    signIn(email, password)
+      .then(Result => {
+        const user = Result.user;
+        const updateUser = {
+          email,
+          lastLogIn: user?.metadata?.lastSignInTime
+        };
+  
+        fetch('http://localhost:5000/users', {
+          method: 'PATCH',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(updateUser)
+        })
+          .then(res => res.json())
+          .then(data => console.log(data))
+          .catch(error => console.log(error));
+      })
+      .catch(error => console.log(error));
+  
     // Attempt to reset the form
-      e.currentTarget.reset();
-        
-        
-       
-      };
+    e.currentTarget.reset();
+  };
+  
   return (
     <div>
       <div>
