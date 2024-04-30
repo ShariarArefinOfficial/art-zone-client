@@ -75,7 +75,7 @@ const MyArtList = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/crafts')
+        fetch('https://shariar-craft.vercel.app/crafts')
             .then(res => res.json())
             .then(data => {
                 setData(data);

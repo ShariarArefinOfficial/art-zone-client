@@ -10,11 +10,13 @@ import UpdateCart from "../components/Pages/UpdateCart/UpdateCart";
 import AllArts from "../components/Pages/AllArts/AllArts";
 import ArtDetails from "../components/Pages/ArtDetails";
 //import Arts from "../components/Pages/AllArts/Arts";
+import NotFound from '../components/Pages/NotFound/NotFound'
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <App></App>,
+      errorElement:<NotFound></NotFound>,
       children:[
         {
             path:'/',

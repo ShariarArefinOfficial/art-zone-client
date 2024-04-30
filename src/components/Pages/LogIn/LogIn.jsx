@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 //import { Result } from "postcss";
 
 const LogIn = () => {
-  const {signIn}=useAuthHook();
+  const {signIn,googleSignIn,githubSignIn}=useAuthHook();
   console.log(signIn)
 
   const handleLogin = (e) => {
@@ -28,7 +28,7 @@ const LogIn = () => {
           lastLogIn: user?.metadata?.lastSignInTime
         };
   
-        fetch('http://localhost:5000/users', {
+        fetch('https://shariar-craft.vercel.app/users', {
           method: 'PATCH',
           headers: {
             'content-type': 'application/json'

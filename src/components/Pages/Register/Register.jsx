@@ -52,7 +52,7 @@ const Register = () => {
           console.log(result)
         
         })
-        fetch('http://localhost:5000/users',{
+        fetch('https://shariar-craft.vercel.app/users',{
           method:'POST',
           headers:{
             'content-type':'application/json',

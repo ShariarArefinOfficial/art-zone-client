@@ -2,6 +2,9 @@
 //import useAuthHook from '../../../Hook/useAuthHook'
 import { useState } from "react";
 import useAuthHook from "../../../Hook/useAuthHook";
+//import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddCartItem = () => {
   const {user}=useAuthHook();
@@ -60,7 +63,9 @@ const AddCartItem = () => {
       body: JSON.stringify(newCraft)
   })
     .then(res=>res.json)
-    .then(data=>console.log(data))
+    .then(data=>{
+      toast.success('craft Item suCCessfully Stored')
+    })
       
 
 
@@ -314,6 +319,7 @@ const AddCartItem = () => {
           <input type="submit" value="Add Craft" className="btn btn-block" />
         </form>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
