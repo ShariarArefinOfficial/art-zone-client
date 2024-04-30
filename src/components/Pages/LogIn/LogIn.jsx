@@ -22,6 +22,7 @@ const LogIn = () => {
       .then(Result => {
         toast.success('Log in SuccessFully');
         const user = Result.user;
+        console.log(user)
         const updateUser = {
           email,
           lastLogIn: user?.metadata?.lastSignInTime

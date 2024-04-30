@@ -15,12 +15,21 @@ const NavBar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+      <li>
+        <NavLink to="/allArts">All Art & Craft Items</NavLink>
+      </li>
+      <li>
+        <NavLink to="/addCartItem">Add Cart Items</NavLink>
+      </li>
+      <li>
+        <NavLink to="/myArtAndCartList">My Art&Craft List</NavLink>
+      </li>
       
 
     </>
   );
   return (
-    <div>
+    <div className=" max-w-screen-xl mx-auto">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
