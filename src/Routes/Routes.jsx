@@ -8,6 +8,8 @@ import AddCartItem from "../components/Pages/AddCartItem/AddCartItem";
 import MyArtList from "../components/Pages/MyArtLIst/MyArtList";
 import UpdateCart from "../components/Pages/UpdateCart/UpdateCart";
 import AllArts from "../components/Pages/AllArts/AllArts";
+import ArtDetails from "../components/Pages/ArtDetails";
+//import Arts from "../components/Pages/AllArts/Arts";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +18,8 @@ const router = createBrowserRouter([
       children:[
         {
             path:'/',
-            element:<Home></Home>
+            element:<Home></Home>,
+            loader:()=>fetch('http://localhost:5000/crafts')
         },
         {
           path:'/login',
@@ -43,6 +46,11 @@ const router = createBrowserRouter([
         {
           path:'/allArts',
           element:<AllArts></AllArts>,
+          loader:()=>fetch('http://localhost:5000/crafts')
+        },
+        {
+          path:'/craft/:id',
+          element:<PrivateRoutes><ArtDetails></ArtDetails></PrivateRoutes>,
           loader:()=>fetch('http://localhost:5000/crafts')
         }
 
