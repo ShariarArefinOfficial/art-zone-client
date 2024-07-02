@@ -11,6 +11,11 @@ import AllArts from "../components/Pages/AllArts/AllArts";
 import ArtDetails from "../components/Pages/ArtDetails";
 //import Arts from "../components/Pages/AllArts/Arts";
 import NotFound from '../components/Pages/NotFound/NotFound'
+import Landscape from "../components/Similar/Catagories/Landscape";
+import Portrait from "../components/Similar/Catagories/Portrait";
+import WaterColor from "../components/Similar/Catagories/WaterColor";
+import Charcoal from "../components/Similar/Catagories/Charcoal";
+import Cartoon from "../components/Similar/Catagories/Cartoon";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +26,7 @@ const router = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>,
-            loader:()=>fetch('http://localhost:5000/crafts')
+            loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
         },
         {
           path:'/login',
@@ -43,18 +48,55 @@ const router = createBrowserRouter([
         {
           path:'/updateCraft/:id',
           element:<UpdateCart></UpdateCart>,
-          loader: ({ params }) => fetch(`http://localhost:5000/craft/${params.id}`)
+          loader: ({ params }) => fetch(`https://shariar-craft.vercel.app/craft/${params.id}`)
         },
         {
           path:'/allArts',
           element:<AllArts></AllArts>,
-          loader:()=>fetch('http://localhost:5000/crafts')
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
         },
         {
           path:'/craft/:id',
           element:<PrivateRoutes><ArtDetails></ArtDetails></PrivateRoutes>,
-          loader:()=>fetch('http://localhost:5000/crafts')
-        }
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
+        },
+        {
+          path:'/craft/categories/LandScape',
+          element:<Landscape></Landscape>,
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
+        },
+        {
+          path:'/craft/categories/Portrait',
+          element:<Portrait></Portrait>,
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
+        },
+        {
+          path:'/craft/categories/Watercolour',
+          element:<WaterColor></WaterColor>,
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
+        },
+        {
+          path:'/craft/categories/oil',
+          element:<WaterColor></WaterColor>,
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
+        },
+        {
+          path:'/craft/categories/oil',
+          element:<WaterColor></WaterColor>,
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
+        },
+        {
+          path:'/craft/categories/Charcoal',
+          element:<Charcoal></Charcoal>,
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
+
+        },
+        {
+          path:'/craft/categories/Cartoon',
+          element:<Cartoon></Cartoon>,
+          loader:()=>fetch('https://shariar-craft.vercel.app/crafts')
+
+        },
 
         
       ]

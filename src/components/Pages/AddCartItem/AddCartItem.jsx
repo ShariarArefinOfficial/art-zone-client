@@ -55,7 +55,7 @@ const AddCartItem = () => {
 
 
     // send data to the server
-    fetch('http://localhost:5000/crafts', {
+    fetch('https://shariar-craft.vercel.app/crafts', {
       method: 'POST',
       headers: {
           'content-type': 'application/json'

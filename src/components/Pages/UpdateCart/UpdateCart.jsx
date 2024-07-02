@@ -65,7 +65,7 @@ const UpdateCart = () => {
     
         // send data to the server
                 // send data to the server
-                fetch(`http://localhost:5000/craft/${_id}`, {
+                fetch(`https://shariar-craft.vercel.app/craft/${_id}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
